@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "readable-commit",
+    "dev": "readable-changelog-dev"
+  },
+}
