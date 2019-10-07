@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import * as serviceWorker from './serviceWorker'
 import './firebase/init'
-import { HistoricProvider } from './store/historic'
+import { AuthenticationProvider } from './state/authentication'
+import App from './App'
+import './index.css'
 
 ReactDOM.render(
-    <HistoricProvider>
+    <AuthenticationProvider>
         <App />
-    </HistoricProvider>, 
+    </AuthenticationProvider>, 
     document.getElementById('root')
-);
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister()
