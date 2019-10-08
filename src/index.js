@@ -4,13 +4,15 @@ import * as serviceWorker from './serviceWorker'
 import './firebase/init'
 import { AuthenticationProvider } from './state/authentication'
 import App from './App'
+
+import 'antd/dist/antd.css'
 import './index.css'
 
 ReactDOM.render(
-    <AuthenticationProvider>
-        <App />
-    </AuthenticationProvider>, 
-    document.getElementById('root')
+  <AuthenticationProvider>
+    <App />
+  </AuthenticationProvider>,
+  document.getElementById('root'),
 )
 
 // If you want your app to work offline and load faster, you can change

@@ -2,24 +2,30 @@ import React, { useContext, useEffect } from 'react'
 import isUndefined from 'lodash/isUndefined'
 
 import { Store } from './state/authentication'
+
+import Layout from './components/Layout'
+import Navbar from './components/Navbar'
+
 import './App.css'
 
 
 const App = () => {
   const { state, actions } = useContext(Store)
-  
-  useEffect(() => { isUndefined(state.user) && actions.checkLogin() })
+
+  useEffect(() => {
+    if (isUndefined(state.user)) actions.checkLogin()
+  })
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={actions.login}>Login</button>
-        {state.user && <button onClick={actions.logout}>Logout</button>}
-      </header>
-    </div>
+    <Layout
+      header={(
+        <Navbar
+          onLogin={actions.login}
+          onLogout={actions.logout}
+          user={state.user}
+        />
+      )}
+    />
   )
 }
 
