@@ -10,11 +10,11 @@ export default (dispatch) => ({
     const provider = new firebase.auth.GoogleAuthProvider()
 
     dispatch({ type: 'SET_LOADING', payload: true })
-  
+
     try {
       const { user } = await firebase.auth().signInWithPopup(provider)
 
-      if(!WHITE_LIST.includes(user.email)) throw new Error('Unauthorized user')
+      if (!WHITE_LIST.includes(user.email)) throw new Error('Unauthorized user')
 
       const usersDB = new UsersDB()
       const userFromFirebase = await usersDB.read(user.uid)
@@ -31,11 +31,11 @@ export default (dispatch) => ({
     }
   },
   checkLogin: async () => {
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged((user) => {
       dispatch({ type: 'SET_USER', payload: user })
     })
   },
   logout: async () => {
     await firebase.auth().signOut()
-  }
+  },
 })
