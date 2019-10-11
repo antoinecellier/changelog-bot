@@ -1,0 +1,21 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.items {
+    display: flex;
+}
+
+.items > .item {
+    color: white;
+    width:  100px;
+    text-align: center;
+}
+
+.extra {
+    color: white;
+    width:  100px;
+    text-align: center;
+}
