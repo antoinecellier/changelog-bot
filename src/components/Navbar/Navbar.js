@@ -16,18 +16,21 @@ const Navbar = ({
     <div className="navbar">
       <div className="items">
         <NavLink exact to="/" activeClassName="selected">
-          <div className="item">
-          Home
-          </div>
+          <div className="item">Home</div>
         </NavLink>
-        <NavLink to="/historic" activeClassName="selected">
-          <div className="item">
-          Historic
-          </div>
-        </NavLink>
+        {user && (
+          <>
+            <NavLink to="/changelog" activeClassName="selected">
+              <div className="item">Changelog</div>
+            </NavLink>
+            <NavLink to="/historic" activeClassName="selected">
+              <div className="item">Historic</div>
+            </NavLink>
+          </>
+        )}
       </div>
       <div className="extra">
-        <Button type="primary" onClick={user ? onLogout : onLogin}>
+        <Button type={user ? 'danger' : 'primary'} onClick={user ? onLogout : onLogin}>
           {user ? 'Logout' : 'Login'}
         </Button>
       </div>
