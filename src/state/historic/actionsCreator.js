@@ -10,7 +10,7 @@ export default (dispatch) => ({
     const t = await rep.json()
     return dispatch({
       type: 'FETCH_LIST',
-      payload: [t]
+      payload: [t],
     })
   },
 //   add: async ({ rootState }, changelog) => {
