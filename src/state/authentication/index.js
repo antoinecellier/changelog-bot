@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react'
 import { node } from 'prop-types'
 import actionsCreator from './actionsCreator'
 
-export const Store = createContext()
+export const AuthenticationContext = createContext()
 
 const initialState = {
   user: undefined,
@@ -25,9 +25,9 @@ export const AuthenticationProvider = ({ children }) => {
   const actions = actionsCreator(dispatch)
 
   return (
-    <Store.Provider value={{ state, actions }}>
+    <AuthenticationContext.Provider value={{ state, actions }}>
       {children}
-    </Store.Provider>
+    </AuthenticationContext.Provider>
   )
 }
 

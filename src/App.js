@@ -1,16 +1,18 @@
 import React, { useContext, useEffect } from 'react'
 import isUndefined from 'lodash/isUndefined'
 
-import { Store } from './state/authentication'
-
 import Layout from './components/Layout'
 import Navbar from './components/Navbar'
+import Routes from './Routes'
+
+import { AuthenticationContext } from './state/authentication'
+
 
 import './App.css'
 
 
 const App = () => {
-  const { state, actions } = useContext(Store)
+  const { state, actions } = useContext(AuthenticationContext)
 
   useEffect(() => {
     if (isUndefined(state.user)) actions.checkLogin()
@@ -25,6 +27,7 @@ const App = () => {
           user={state.user}
         />
       )}
+      content={<Routes />}
     />
   )
 }

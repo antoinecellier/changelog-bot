@@ -1,6 +1,7 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { func, object } from 'prop-types'
-import { Layout, Menu, Button } from 'antd'
+import { Layout, Button } from 'antd'
 import './navbar.css'
 
 const { Header } = Layout
@@ -14,12 +15,16 @@ const Navbar = ({
     <div className="logo" />
     <div className="navbar">
       <div className="items">
-        <div className="item">
-          Menu 1
-        </div>
-        <div className="item">
-          Menu 2
-        </div>
+        <NavLink exact to="/" activeClassName="selected">
+          <div className="item">
+          Home
+          </div>
+        </NavLink>
+        <NavLink to="/historic" activeClassName="selected">
+          <div className="item">
+          Historic
+          </div>
+        </NavLink>
       </div>
       <div className="extra">
         <Button type="primary" onClick={user ? onLogout : onLogin}>
