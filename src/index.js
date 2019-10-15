@@ -6,6 +6,8 @@ import * as serviceWorker from './serviceWorker'
 import './firebase/init'
 
 import { AuthenticationProvider } from './state/authentication'
+import { HistoricProvider } from './state/historic'
+
 import App from './App'
 import 'antd/dist/antd.css'
 import './index.css'
@@ -13,7 +15,9 @@ import './index.css'
 ReactDOM.render(
   <AuthenticationProvider>
     <BrowserRouter>
-      <App />
+      <HistoricProvider>
+        <App />
+      </HistoricProvider>
     </BrowserRouter>
   </AuthenticationProvider>,
   document.getElementById('root'),

@@ -1,8 +1,13 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useContext } from 'react'
 import { node } from 'prop-types'
+
+import { useAuthenticationContext } from '../authentication'
+
 import actionsCreator from './actionsCreator'
 
-export const Store = React.createContext()
+const HistoricContext = React.createContext()
+
+export const useHistoricContext = () => useContext(HistoricContext)
 
 const initialState = {
   historic: [],
@@ -18,12 +23,15 @@ function reducer(state, action) {
 }
 
 export const HistoricProvider = ({ children }) => {
+  const { state: authentication } = useAuthenticationContext()
+
   const [state, dispatch] = useReducer(reducer, initialState)
-  const actions = actionsCreator(dispatch)
+  const actions = actionsCreator(dispatch, { authentication })
+
   return (
-    <Store.Provider value={{ state, actions }}>
+    <HistoricContext.Provider value={{ state, actions }}>
       {children}
-    </Store.Provider>
+    </HistoricContext.Provider>
   )
 }
 

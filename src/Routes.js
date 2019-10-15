@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useContext } from 'react'
+import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
-import { AuthenticationContext } from './state/authentication'
+import { useAuthenticationContext } from './state/authentication'
 
 import Home from './screens/Home'
 import Historic from './screens/Historic'
 import Changelog from './screens/Changelog'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { state } = useContext(AuthenticationContext)
+  const { state } = useAuthenticationContext()
   return (
     <Route
       {...rest}
