@@ -6,11 +6,9 @@ export default (dispatch, store) => ({
     const historicDb = new HistoricDB(store.authentication.user.uid)
     const list = await historicDb.readAll()
     console.log({ list })
-    const rep = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-    const t = await rep.json()
     return dispatch({
       type: 'FETCH_LIST',
-      payload: [t],
+      payload: list,
     })
   },
 //   add: async ({ rootState }, changelog) => {

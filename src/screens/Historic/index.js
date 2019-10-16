@@ -8,7 +8,10 @@ const Historic = () => {
   })
 
   return (
-    <h1>Historic</h1>
+    <>
+      <h1>Historic</h1>
+      {state.historic.map(({ test }) => test)}
+    </>
   )
 }
 
