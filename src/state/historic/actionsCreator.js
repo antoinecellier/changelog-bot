@@ -5,7 +5,6 @@ export default (dispatch, store) => ({
   list: async () => {
     const historicDb = new HistoricDB(store.authentication.user.uid)
     const list = await historicDb.readAll()
-    console.log({ list })
     return dispatch({
       type: 'FETCH_LIST',
       payload: list,

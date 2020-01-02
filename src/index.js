@@ -7,19 +7,23 @@ import './firebase/init'
 
 import { AuthenticationProvider } from './state/authentication'
 import { HistoricProvider } from './state/historic'
+import { CommitsProvider } from './state/commits'
 
 import App from './App'
 import 'antd/dist/antd.css'
 import './index.css'
 
 ReactDOM.render(
-  <AuthenticationProvider>
-    <BrowserRouter>
-      <HistoricProvider>
-        <App />
-      </HistoricProvider>
-    </BrowserRouter>
-  </AuthenticationProvider>,
+  <BrowserRouter>
+    <AuthenticationProvider>
+      <CommitsProvider>
+        <HistoricProvider>
+          <App />
+        </HistoricProvider>
+      </CommitsProvider>
+    </AuthenticationProvider>
+  </BrowserRouter>,
+
   document.getElementById('root'),
 )
 
