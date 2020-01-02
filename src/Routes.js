@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
-import {
-  BrowserRouter, Route, Switch, Redirect,
-} from 'react-router-dom'
+import { Route, Switch, Redirect  } from 'react-router-dom'
 
 import { useAuthenticationContext } from './state/authentication'
 

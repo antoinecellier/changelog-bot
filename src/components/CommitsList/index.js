@@ -26,18 +26,18 @@ const rowSelection = {
 }
 
 const CommitsList = ({
-  data,
+  commits,
 }) => (
   <Table
     rowSelection={rowSelection}
     columns={columns}
-    dataSource={data}
+    dataSource={commits}
     pagination={{ defaultPageSize: 5 }}
   />
 )
 
 CommitsList.propTypes = {
-  data: arrayOf(
+  commits: arrayOf(
     shape({
       key: string,
       title: string,
