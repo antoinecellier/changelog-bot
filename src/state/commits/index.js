@@ -5,36 +5,36 @@ import { useAuthenticationContext } from '../authentication'
 
 import actionsCreator from './actionsCreator'
 
-const HistoricContext = React.createContext()
+const CommitsContext = React.createContext()
 
-export const useHistoricContext = () => useContext(HistoricContext)
+export const useCommitsContext = () => useContext(CommitsContext)
 
 const initialState = {
-  historic: [],
+  list: [],
 }
 
 function reducer(state, action) {
   switch (action.type) {
     case 'FETCH_LIST':
-      return { ...state, historic: action.payload }
+      return { ...state, list: action.payload }
     default:
       return state
   }
 }
 
-export const HistoricProvider = ({ children }) => {
+export const CommitsProvider = ({ children }) => {
   const { state: authentication } = useAuthenticationContext()
 
   const [state, dispatch] = useReducer(reducer, initialState)
   const actions = actionsCreator(dispatch, { authentication })
 
   return (
-    <HistoricContext.Provider value={{ state, actions }}>
+    <CommitsContext.Provider value={{ state, actions }}>
       {children}
-    </HistoricContext.Provider>
+    </CommitsContext.Provider>
   )
 }
 
-HistoricProvider.propTypes = {
+CommitsProvider.propTypes = {
   children: node,
 }

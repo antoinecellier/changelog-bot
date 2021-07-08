@@ -1,8 +1,10 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useContext } from 'react'
 import { node } from 'prop-types'
 import actionsCreator from './actionsCreator'
 
-export const AuthenticationContext = createContext()
+const AuthenticationContext = createContext()
+
+export const useAuthenticationContext = () => useContext(AuthenticationContext)
 
 const initialState = {
   user: undefined,

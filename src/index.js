@@ -6,16 +6,27 @@ import * as serviceWorker from './serviceWorker'
 import './firebase/init'
 
 import { AuthenticationProvider } from './state/authentication'
+import { HistoricProvider } from './state/historic'
+import { CommitsProvider } from './state/commits'
+import { TagsProvider } from './state/tags'
+
 import App from './App'
 import 'antd/dist/antd.css'
 import './index.css'
 
 ReactDOM.render(
-  <AuthenticationProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </AuthenticationProvider>,
+  <BrowserRouter>
+    <AuthenticationProvider>
+      <CommitsProvider>
+        <TagsProvider>
+          <HistoricProvider>
+            <App />
+          </HistoricProvider>
+        </TagsProvider>
+      </CommitsProvider>
+    </AuthenticationProvider>
+  </BrowserRouter>,
+
   document.getElementById('root'),
 )
 
